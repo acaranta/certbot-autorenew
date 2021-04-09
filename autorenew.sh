@@ -9,6 +9,7 @@ do
 		do 
 			cat /etc/letsencrypt/live/${cert}/privkey.pem >/tmp/certbot_${cert}.crt
 			cat /etc/letsencrypt/live/${cert}/fullchain.pem >> /tmp/certbot_${cert}.crt
+			cp ${CRTDIR}/certbot_${cert}.crt ${CRTDIR}/certbot_${cert}.crt.old
 			cp /tmp/certbot_${cert}.crt ${CRTDIR}
 		done
 	fi
