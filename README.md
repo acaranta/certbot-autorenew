@@ -49,3 +49,5 @@ Once your certificates are generated you can run the container using this docker
 Where the Environment Variables passed are :
 * CERTDIR : is the path to where the haproxy certificates will be placed/overwritten once the renew will be done
 * INTERVAL : Interval between renewal attempts by certbot (Default 7D = 7 Days)
+
+This will run certbot every INTERVAL, and will try to renew every Certificates found within the letsencrypt cerbot volumes.
