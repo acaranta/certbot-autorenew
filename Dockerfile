@@ -3,7 +3,8 @@ ENV CRTDIR=/crts
 ENV INTERVAL=7d
 
 ADD autorenew.sh /autorenew.sh
-RUN chmod a+x /autorenew.sh
+ADD upload-to-minio.sh /upload-to-minio.sh
+RUN chmod a+x /autorenew.sh ; chmod a+x /upload-to-minio.sh
 RUN mkdir /crts
 
 WORKDIR /
