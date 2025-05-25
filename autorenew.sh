@@ -11,6 +11,9 @@ do
 			cat /etc/letsencrypt/live/${cert}/fullchain.pem >> /tmp/certbot_${cert}.crt
 			cp ${CRTDIR}/certbot_${cert}.crt ${CRTDIR}/certbot_${cert}.crt.old
 			cp /tmp/certbot_${cert}.crt ${CRTDIR}
+			if [ -n "${MINIO_URL}" ]; then
+				./upload-to-minio.sh ${MINIO_URL} ${MINIO_USER} ${MINIO_PASS} ${MINIO_BUCKET} ${MINIO_PATH}/certbot_${cert}.crt /tmp/certbot_${cert}.crt
+			fi
 		done
 	fi
 	echo "Waiting ${INTERVAL}"

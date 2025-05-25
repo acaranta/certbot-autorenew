@@ -38,6 +38,11 @@ Once your certificates are generated you can run the container using this docker
     environment:
       - "CERTDIR=/crts"
       - "INTERVAL=7d"
+      - MINIO_URL 
+      - MINIO_USER
+      - MINIO_PASS
+      - MINIO_BUCKET
+      - MINIO_PATH
     volumes:
       - /volumespath/certbot/etc:/etc/letsencrypt
       - /volumespath/certbot/var/lib:/var/lib/letsencrypt
@@ -49,5 +54,10 @@ Once your certificates are generated you can run the container using this docker
 Where the Environment Variables passed are :
 * CERTDIR : is the path to where the haproxy certificates will be placed/overwritten once the renew will be done
 * INTERVAL : Interval between renewal attempts by certbot (Default 7D = 7 Days)
+* MINIO_URL : if set (to your minio S3 storage host) this will try to send the certificates to S3
+* MINIO_USER : Access key
+* MINIO_PASS : Secret Key
+* MINIO_BUCKET : S3 Bucket
+* MINIO_PATH : path in the bucket to store the certificates
 
 This will run certbot every INTERVAL, and will try to renew every Certificates found within the letsencrypt cerbot volumes.
