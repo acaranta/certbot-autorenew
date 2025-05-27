@@ -38,11 +38,11 @@ Once your certificates are generated you can run the container using this docker
     environment:
       - "CERTDIR=/crts"
       - "INTERVAL=7d"
-      - MINIO_URL 
-      - MINIO_USER
-      - MINIO_PASS
-      - MINIO_BUCKET
-      - MINIO_PATH
+      - MINIO_URL=s3.myminio.net
+      - MINIO_USER=<ACCESS KEY>
+      - MINIO_PASS=<ACCESS SECRET>
+      - MINIO_BUCKET=mybucket
+      - MINIO_PATH=lbcerts
     volumes:
       - /volumespath/certbot/etc:/etc/letsencrypt
       - /volumespath/certbot/var/lib:/var/lib/letsencrypt
